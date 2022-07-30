@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>NotesApp</title>
+    
 </head>
 <body>
-    <h1>Home</h1>
+    <style>
+        .links{
+            float: right;
+
+        }
+    </style>
+    
+    <a href="{% url 'home'%}"><h1>Notes</h1></a>
+    <div class="links">
+       <h3> <a href="{% url 'addn'%}">Add Notes</a></h3>
+        <h3><a href=""></a></h3>
+        
+        
+    </div>
+    <br><br><br>
+    <hr>
+    {% block content %}
+    {% endblock %}
+
+    {% for data in noteData %}
+    <h3>{{data.note_name}}</h3>
+    <h5>{{data.created}}</h5>
+    <p>{{data.note_data}}</p>
+    <a href="">Edit </a> &nbsp<a href=""> Delete</a>
+    <hr>
+
+
+    {% endfor %}
+    
 </body>
-</html>
+</html> 
