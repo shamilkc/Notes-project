@@ -24,8 +24,10 @@ def addNotes(request):
 
 
 def deleteNote(request):
-    item =DataN.objects.get(note_n)
+    
+    item =DataN.objects.get()
     if request.method =="POST":
         item.delete()
 
-    return render(request,'deleteN.html')
+    context ={'item':item}
+    return render(request,'deleteN.html',context)
