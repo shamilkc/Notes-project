@@ -31,7 +31,7 @@
     <h3>{{data.note_name}}</h3>
     <h5>{{data.created}}</h5>
     <p>{{data.note_data}}</p>
-    <a href="">Edit </a> &nbsp<a href="{% url 'delete' q='first' %} "> Delete</a>
+    <a href="">Edit </a> &nbsp<a href="{% url 'delete' data.id %} "> Delete</a>
     <hr>
 
 

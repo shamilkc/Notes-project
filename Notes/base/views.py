@@ -1,6 +1,8 @@
 from multiprocessing import context
-from django.shortcuts import render
+import re
+from django.shortcuts import render,redirect
 from .models import DataN
+
 
 # Create your views here.
 
@@ -19,15 +21,17 @@ def addNotes(request):
 
         n = DataN(note_name=name,note_data=dataNote)
         n.save()
+        return redirect('home')
 
     return render(request,'addnotes.html')
 
 
-def deleteNote(request):
+def deleteNote(request,pk):
     
-    item =DataN.objects.get()
+    item =DataN.objects.get(id=pk)
     if request.method =="POST":
         item.delete()
+        return redirect('home') 
 
     context ={'item':item}
     return render(request,'deleteN.html',context)
